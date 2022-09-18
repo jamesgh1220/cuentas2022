@@ -1,5 +1,10 @@
 @extends('welcome')
 
+
+
+
+
+
 @section('content')
     <div class="container text-center w-100">
         <div class="row">
