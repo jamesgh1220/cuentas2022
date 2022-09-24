@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrestamoController;
-use App\Http\Controllers\DeudaController;
+use App\Http\Controllers\CuotaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +22,7 @@ Route::get('/prestamo', [PrestamoController::class, 'index'])->name('prestamo.in
 Route::post('/prestamoCrear', [PrestamoController::class, 'guardarPrestamo'])->name('prestamo.guardar');
 Route::get('/prestamos', [PrestamoController::class, 'prestamos'])->name('prestamo.prestamo');
 Route::get('/deudas', [PrestamoController::class, 'deudas'])->name('prestamo.deuda');
+Route::get('/editar/{id}', [PrestamoController::class, 'editar'])->name('prestamo.editar');
+Route::post('/actualizar', [PrestamoController::class, 'actualizar'])->name('prestamo.actualizar');
+Route::get('/agregarCuota/{id}', [CuotaController::class, 'index'])->name('cuota.index');
+Route::post('/agregarCuota', [CuotaController::class, 'guardarCuota'])->name('cuota.guardar');
