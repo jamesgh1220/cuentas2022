@@ -1,5 +1,5 @@
-<div class="col">
-    <div class="card text-white w-75 bg-info">
+<div class="col-4">
+    <div class="card text-white bg-info">
         <div class="card-header">
             <h4>Crear</h4>
         </div>

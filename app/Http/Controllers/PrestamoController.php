@@ -67,8 +67,6 @@ class PrestamoController extends Controller
         ]);
 
         $prestamoEditar = Prestamo::find($request->prestamo_id);
-        // var_dump($request->tipo_prestamo);
-        // die();
         $prestamoEditar->tipo_prestamo = (int)$request->tipo_prestamo;
         $prestamoEditar->nombre = $request->nombre;
         $prestamoEditar->descripcion = $request->descripcion;

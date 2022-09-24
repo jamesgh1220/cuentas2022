@@ -22,7 +22,9 @@ Route::get('/prestamo', [PrestamoController::class, 'index'])->name('prestamo.in
 Route::post('/prestamoCrear', [PrestamoController::class, 'guardarPrestamo'])->name('prestamo.guardar');
 Route::get('/prestamos', [PrestamoController::class, 'prestamos'])->name('prestamo.prestamo');
 Route::get('/deudas', [PrestamoController::class, 'deudas'])->name('prestamo.deuda');
-Route::get('/editar/{id}', [PrestamoController::class, 'editar'])->name('prestamo.editar');
-Route::post('/actualizar', [PrestamoController::class, 'actualizar'])->name('prestamo.actualizar');
-Route::get('/agregarCuota/{id}', [CuotaController::class, 'index'])->name('cuota.index');
+Route::get('/editarPrestamo/{id}', [PrestamoController::class, 'editar'])->name('prestamo.editar');
+Route::post('/actualizarPrestamo', [PrestamoController::class, 'actualizar'])->name('prestamo.actualizar');
+Route::get('/configurarCuota/{id}', [CuotaController::class, 'index'])->name('cuota.index');
 Route::post('/agregarCuota', [CuotaController::class, 'guardarCuota'])->name('cuota.guardar');
+Route::get('/editarCuota/{id}', [CuotaController::class, 'editar'])->name('cuota.editar');
+Route::post('/actualizarCuota', [CuotaController::class, 'actualizar'])->name('cuota.actualizar');

@@ -5,7 +5,7 @@
         <div class="row">
         @include('includes.message')
         @include('includes.form')
-            <div class="col">
+            <div class="col-8">
                 <div class="card text-white bg-info">
                     <div class="card-header">
                         <h4>Tabla de informacion</h4>
@@ -41,7 +41,7 @@
                             <tbody>
                                 @foreach ($prestamos as $prestamo)
                                     <tr class="text-white">
-                                        <td><a class="text-black" href="{{ route('cuota.index', ['id' => $prestamo->id]) }}"><i class="fa-solid fa-circle-plus"></i></a></td>
+                                        <td><a class="text-black" href="{{ route('cuota.index', ['id' => $prestamo->id]) }}"><i class="fa-sharp fa-solid fa-gear"></i></a></td>
                                         <td><a class="text-black" href="{{ route('prestamo.editar', ['id' => $prestamo->id]) }}"><i class="fa-regular fa-pen-to-square"></i></a></td>
                                         <td><a class="text-black" href=""><i class="fa-solid fa-trash"></i></a></td>
                                         <td><?php echo $prestamo->tipo_prestamo === 0 ? 'Prestamo' : 'Deuda'; ?></td>

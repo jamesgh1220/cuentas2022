@@ -5,7 +5,7 @@
         <div class="row">
         @include('includes.message')
             <div class="col">
-                <div class="card text-white w-75 bg-info">
+                <div class="card text-white bg-info">
                     <div class="card-header">
                         <h4>Editar: {{$prestamo->nombre}}</h4>
                     </div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-8">
                 <div class="card text-white bg-info">
                     <div class="card-header">
                         <h4>Tabla de informacion</h4>

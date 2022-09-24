@@ -12,9 +12,64 @@ class CuotaController extends Controller
     public function index($id) {
         $prestamo = Prestamo::find($id);
         $valor = $prestamo->valor;
+        $cuotas = Cuota::where('prestamo_id', '=', $prestamo->id)->get();
+        $abonado = Cuota::where('prestamo_id', '=', $prestamo->id)->sum('valor');
         return view('cuota.index', [
             'prestamo' => $prestamo,
-            'valor' => $valor
+            'valor' => $valor,
+            'abonado' => (int)$abonado,
+            'cuotas' => $cuotas
+        ]);
+    }
+
+    public function guardarCuota(Request $request) {
+        $validate = $this->validate($request, [
+            'descripcion' => 'string|required',
+            'valor' => 'integer|required',
+        ]);
+
+        $cuota = new Cuota();
+        $cuota->prestamo_id = (int)$request->prestamo_id;
+        $cuota->descripcion = $request->descripcion;
+        $cuota->valor = (int)$request->valor;
+        $cuota->save();
+        $ruta = 'agregarCuota/'.$cuota->prestamo_id;
+        
+
+        return redirect($ruta)->with([
+            'message' => 'El registro ha sido creado correctamente.'
+        ]);
+    }
+
+    public function editar($id) {
+        $cuota = Cuota::find($id);
+        $valor = $cuota->valor;
+        $prestamo = Prestamo::find($cuota->prestamo_id);
+        $cuotas = Cuota::where('prestamo_id', '=', $prestamo->id)->get();
+        $abonado = Cuota::where('prestamo_id', '=', $prestamo->id)->sum('valor');
+        return view('cuota.editar', [
+            'prestamo' => $prestamo,
+            'valor' => $valor,
+            'abonado' => (int)$abonado,
+            'cuotas' => $cuotas,
+            'cuota' => $cuota
+        ]);
+    }
+
+    public function actualizar(Request $request) {
+        $validate = $this->validate($request, [
+            'descripcion' => 'string|required',
+            'valor' => 'integer|required',
+        ]);
+
+        $cuotaEditar = Cuota::find($request->cuota_id);
+        $cuotaEditar->descripcion = $request->descripcion;
+        $cuotaEditar->valor = $request->valor;
+        $cuotaEditar->update();
+        $ruta = 'configurarCuota/'.$request->cuota_id;
+
+        return redirect($ruta)->with([
+            'message' => 'El registro ha sido creado correctamente.'
         ]);
     }
 }
