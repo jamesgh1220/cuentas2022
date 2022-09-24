@@ -33,7 +33,7 @@ class CuotaController extends Controller
         $cuota->descripcion = $request->descripcion;
         $cuota->valor = (int)$request->valor;
         $cuota->save();
-        $ruta = 'agregarCuota/'.$cuota->prestamo_id;
+        $ruta = 'configurarCuota/'.$cuota->prestamo_id;
         
 
         return redirect($ruta)->with([
@@ -43,8 +43,9 @@ class CuotaController extends Controller
 
     public function editar($id) {
         $cuota = Cuota::find($id);
-        $valor = $cuota->valor;
+        $valorCuota = $cuota->valor;
         $prestamo = Prestamo::find($cuota->prestamo_id);
+        $valor = $prestamo->valor;
         $cuotas = Cuota::where('prestamo_id', '=', $prestamo->id)->get();
         $abonado = Cuota::where('prestamo_id', '=', $prestamo->id)->sum('valor');
         return view('cuota.editar', [
@@ -52,7 +53,8 @@ class CuotaController extends Controller
             'valor' => $valor,
             'abonado' => (int)$abonado,
             'cuotas' => $cuotas,
-            'cuota' => $cuota
+            'cuota' => $cuota,
+            'valorCuota' => $valorCuota
         ]);
     }
 
@@ -66,7 +68,7 @@ class CuotaController extends Controller
         $cuotaEditar->descripcion = $request->descripcion;
         $cuotaEditar->valor = $request->valor;
         $cuotaEditar->update();
-        $ruta = 'configurarCuota/'.$request->cuota_id;
+        $ruta = 'configurarCuota/'.$cuotaEditar->prestamo_id;
 
         return redirect($ruta)->with([
             'message' => 'El registro ha sido creado correctamente.'

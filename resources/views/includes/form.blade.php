@@ -1,5 +1,5 @@
 <div class="col-4">
-    <div class="card text-white bg-info">
+    <div class="box card text-white">
         <div class="card-header">
             <h4>Crear</h4>
         </div>
