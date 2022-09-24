@@ -48,4 +48,35 @@ class PrestamoController extends Controller
             'message' => 'El registro ha sido creado correctamente.'
         ]);
     }
+
+    public function editar($id) {
+        $prestamos = Prestamo::all();
+        $prestamo = Prestamo::find($id);
+        return view('prestamo.editar', [
+            'prestamo' => $prestamo,
+            'prestamos' => $prestamos
+        ]);
+    }
+
+    public function actualizar(Request $request) {
+        $validate = $this->validate($request, [
+            'tipo_prestamo' => 'integer|required',
+            'nombre' => 'string|required',
+            'descripcion' => 'string|required',
+            'valor' => 'integer|required'
+        ]);
+
+        $prestamoEditar = Prestamo::find($request->prestamo_id);
+        // var_dump($request->tipo_prestamo);
+        // die();
+        $prestamoEditar->tipo_prestamo = (int)$request->tipo_prestamo;
+        $prestamoEditar->nombre = $request->nombre;
+        $prestamoEditar->descripcion = $request->descripcion;
+        $prestamoEditar->valor = $request->valor;
+
+        $prestamoEditar->update();
+        return redirect()->route('prestamo.index')->with([
+            'message' => 'El registro ha sido actualizado correctamente.'
+        ]);
+    }
 }

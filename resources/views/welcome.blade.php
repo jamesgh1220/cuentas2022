@@ -17,7 +17,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="/">Inicio</a>
+                            <a class="nav-link text-white" aria-current="page" href="/">Quincenas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('prestamo.index') }}">Administrador</a>
