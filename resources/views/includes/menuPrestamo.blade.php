@@ -9,7 +9,7 @@
                     <a class="nav-link text-white" aria-current="page" href="{{ route('prestamo.prestamo') }}"><b>Prestamos</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('prestamo.deuda') }}"><b>Deudas</b></a>
+                    <a class="nav-link text-white" href="{{ route('prestamo.deuda') }}"><b>Ahorros</b></a>
                 </li>
             </ul>
         </div>

@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/prestamo', [PrestamoController::class, 'index'])->name('prestamo.index');
+Route::get('/prestamo', [PrestamoController::class, 'prestamos'])->name('prestamo.index');
 Route::post('/prestamoCrear', [PrestamoController::class, 'guardarPrestamo'])->name('prestamo.guardar');
 Route::get('/prestamos', [PrestamoController::class, 'prestamos'])->name('prestamo.prestamo');
 Route::get('/deudas', [PrestamoController::class, 'deudas'])->name('prestamo.deuda');
@@ -28,3 +28,4 @@ Route::get('/configurarCuota/{id}', [CuotaController::class, 'index'])->name('cu
 Route::post('/agregarCuota', [CuotaController::class, 'guardarCuota'])->name('cuota.guardar');
 Route::get('/editarCuota/{id}', [CuotaController::class, 'editar'])->name('cuota.editar');
 Route::post('/actualizarCuota', [CuotaController::class, 'actualizar'])->name('cuota.actualizar');
+Route::get('/ahorro', [PrestamoController::class, 'ahorros'])->name('ahorro.index');

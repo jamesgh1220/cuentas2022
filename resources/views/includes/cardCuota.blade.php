@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <h5>Tipo: </h5>
-        <span><?php echo $prestamo->tipo_prestamo === 0 ? 'Prestamo' : 'Deuda'; ?></span>
+        <span><?php echo $prestamo->tipo_prestamo === 0 ? 'Prestamo' : 'Ahorro'; ?></span>
         <br><br>
         <h5>Descripcion:</h5>
         <span>{{$prestamo->descripcion}}</span>
@@ -13,7 +13,13 @@
         <span>$ <?php echo number_format($valor, 0, '.', ','); ?></span>
         <br><br>
         <h5>Valor actual:</h5>
-        <!-- desde el controlador hace una suma de cuotas con el id prestamo para restarla con el valor -->
-        <span>$ <?php echo number_format($valor-$abonado, 0, '.', ','); ?></span>
+        @if($prestamo->tipo_prestamo !== 1)
+            <!-- desde el controlador hace una suma de cuotas con el id prestamo para restarla con el valor -->
+            <span>$ <?php echo number_format($valor-$abonado, 0, '.', ','); ?></span>
+        @endif
+        @if($prestamo->tipo_prestamo === 1)
+            <!-- desde el controlador hace una suma de cuotas con el id prestamo para restarla con el valor -->
+            <span>$ <?php echo number_format($valor+$abonado, 0, '.', ','); ?></span>
+        @endif
     </div>
 </div>

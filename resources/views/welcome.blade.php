@@ -18,10 +18,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="/">Quincenas</a>
+                            <a class="nav-link text-white" href="{{ route('prestamo.index') }}">Prestamos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('prestamo.index') }}">Administrador</a>
+                            <a class="nav-link text-white" href="{{ route('ahorro.index') }}">Ahorros</a>
                         </li>
                     </ul>
                 </div>

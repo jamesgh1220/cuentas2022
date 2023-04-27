@@ -3,7 +3,6 @@
         <div class="card-header">
             <h4>Tabla de informacion</h4>
         </div>
-        @include('includes.menuPrestamo')
         <div class="card-body">
             <table class="table">
                 <thead>
@@ -24,7 +23,7 @@
                             <td><a class="text-black" href="{{ route('cuota.index', ['id' => $prestamo->id]) }}"><i class="fa-sharp fa-solid fa-gear"></i></a></td>
                             <td><a class="text-black" href="{{ route('prestamo.editar', ['id' => $prestamo->id]) }}"><i class="fa-regular fa-pen-to-square"></i></a></td>
                             <td><a class="text-black" href=""><i class="fa-solid fa-trash"></i></a></td>
-                            <td><?php echo $prestamo->tipo_prestamo === 0 ? 'Prestamo' : 'Deuda'; ?></td>
+                            <td><?php echo $prestamo->tipo_prestamo === 0 ? 'Prestamo' : 'Ahorro'; ?></td>
                             <td>{{$prestamo->nombre}}</td>
                             <td>{{$prestamo->descripcion}}</td>
                             <td>$ <?php echo number_format($prestamo->valor, 0, '.', ','); ?></td>

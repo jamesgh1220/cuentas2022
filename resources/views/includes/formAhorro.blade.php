@@ -1,13 +1,13 @@
 <div class="col-4">
     <div class="box card text-white">
         <div class="card-header">
-            <h4>Crear prestamo</h4>
+            <h4>Crear ahorro</h4>
         </div>
         <div class="card-body">
             <form method="POST" action="{{route('prestamo.guardar')}}">
                 @csrf
                 <div class="mb-3">
-                    <input type="hidden" value="0" name="tipo_prestamo">
+                    <input type="hidden" value="1" name="tipo_prestamo">
                 </div>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>

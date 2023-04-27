@@ -9,22 +9,23 @@ use Illuminate\Http\Request;
 class PrestamoController extends Controller
 {
     public function index() {
-        $prestamos = Prestamo::all();
+        // $prestamos = Prestamo::all();
+        // $ahorros = Prestamo::join('cuota', 'prestamo.id', 'cuota.prestamo_id')->get();
+        // return view('prestamo.index', [
+        //     'prestamos' => $prestamos
+        // ]);
+    }
+
+    public function prestamos() {
+        $prestamos = Prestamo::where('tipo_prestamo', 0)->get();
         return view('prestamo.index', [
             'prestamos' => $prestamos
         ]);
     }
 
-    public function prestamos() {
-        $prestamos = Prestamo::where('tipo_prestamo', 0)->get();
-        return view('prestamo.prestamo', [
-            'prestamos' => $prestamos
-        ]);
-    }
-
-    public function deudas() {
+    public function ahorros() {
         $prestamos = Prestamo::where('tipo_prestamo', 1)->get();
-        return view('prestamo.deuda', [
+        return view('ahorros.index', [
             'prestamos' => $prestamos
         ]);
     }
